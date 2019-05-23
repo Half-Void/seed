@@ -1,0 +1,3 @@
+#First,if the file is existing, that means local file pushsuccessfully!
+
+#the next step is sure the pipeline is tiggered successful!
