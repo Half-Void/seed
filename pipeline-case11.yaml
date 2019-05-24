@@ -9,9 +9,9 @@ stages:
 - name: build
   steps:
   - runScriptConfig:
-      image: busybox:latest
+      image: hello-world
       isShell: true
-      shellScript: ls
+      shellScript: echo hello-world
 - name: publish
   steps:
   - publishImageConfig:
