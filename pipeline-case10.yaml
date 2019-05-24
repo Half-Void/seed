@@ -9,19 +9,16 @@ stages:
   steps:
   - runScriptConfig:
       image: test/hello
-      shellScript: |-
-        mkdir -p /test/
-        ln -s `pwd` /test
-        cd /test
-        docker build -t test/hello .
-        docker images
-- name: Publish
+      isShell: true
+      shellScript: ls
+- name: publish
   steps:
   - publishImageConfig:
-      dockerfilePath: ./Dockerfile
       buildContext: .
-      tag: example-helloserver:${CICD_EXECUTION_SEQUENCE}
+      dockerfilePath: ./Dockerfile
+      tag: pipeline/build:${CICD_PIPELINE_ID}
 - name: Deploy
   steps:
   - applyYamlConfig:
       path: ./deployment.yaml
+
