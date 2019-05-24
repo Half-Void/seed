@@ -5,12 +5,20 @@ stages:
       branch: master
       branchCondition: only
       url: git@github.com:Half-Void/seed.git
-- name: Build
-  steps:
   - runScriptConfig:
       image: test/hello
-      isShell: true
-      shellScript: ls
+      shellScript: |-
+        mkdir -p /test/
+        ln -s `pwd` /test
+        cd /test
+        docker build -t test/hello .
+        docker images
+#- name: Build
+#  steps:
+#  - runScriptConfig:
+#      image: test/hello
+#      isShell: true
+#      shellScript: ls
 - name: publish
   steps:
   - publishImageConfig:
