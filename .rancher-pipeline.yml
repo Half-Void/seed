@@ -1,14 +1,20 @@
 stages:
+- name: clone
+  steps:
+  - sourceCodeConfig:
+      branch: master
+      branchCondition: only
+      url: git@github.com:Half-Void/seed.git
 - name: Build
   steps:
   - runScriptConfig:
-      image: golang:1.11
+      image: test/hello
       shellScript: |-
-        mkdir -p /go/src/github.com/rancher
-        ln -s `pwd` /go/src/github.com/rancher/pipeline-example-go
-        cd /go/src/github.com/rancher/pipeline-example-go
-        go build -o bin/hello-server
-        go test -cover
+        mkdir -p /test/
+        ln -s `pwd` /test
+        cd /test
+        docker build -t test/hello .
+        docker images
 - name: Publish
   steps:
   - publishImageConfig:
