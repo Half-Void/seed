@@ -5,6 +5,7 @@ stages:
       branch: master
       branchCondition: only
       url: git@github.com:Half-Void/seed.git
+- name: Build
   - runScriptConfig:
       image: test/hello
       shellScript: |-
