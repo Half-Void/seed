@@ -26,3 +26,4 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
+#这是一个测试产品流水线的简单案例，直接调用成型的程序执行测试。
